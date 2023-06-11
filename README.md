@@ -1,4 +1,4 @@
-# Ourson.app - Frontend
+# 🧸 Ourson.app - Frontend
 
 Ourson.app is the first intelligent app that gives you a helping paw when it comes to your child's development in three aspects: nutrition, sleep tracking, and activities.
 
