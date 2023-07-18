@@ -42,7 +42,7 @@ function Animation() {
   );
 }
 
-export default function DayScreen({ navigation }) {
+export default function DayMenu({ navigation }) {
   const currentScreen = useNavigationState(
     (state) => state.routes[state.index].name
   );
@@ -91,9 +91,7 @@ export default function DayScreen({ navigation }) {
       ) &&
       timepast < 604800000
     ) {
-      console.log("Not");
     } else {
-      console.log("1");
       fetch("https://back.ourson.app/recipes/weekly", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -103,25 +101,20 @@ export default function DayScreen({ navigation }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("2");
           if (data.result) {
-            console.log("3");
             setWeeklyRecipes({
               baby: data.recipes.map((recipe) => recipe.baby),
               adult: data.recipes.map((recipe) => recipe.adult),
             });
-            console.log("4");
+
             dispatch(
               addWeeklyRecipes({
                 baby: data.recipes.map((recipe) => recipe.baby),
                 adult: data.recipes.map((recipe) => recipe.adult),
               })
             );
-            console.log(data);
+
             dispatch(resetCreatedAt(Date.now()));
-            console.log("createdAt", createdAt);
-            console.log("Date.now", Date.now());
-            console.log("5");
           }
         });
     }

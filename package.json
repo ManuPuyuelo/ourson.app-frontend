@@ -24,7 +24,7 @@
     "expo-updates": "~0.16.4",
     "lottie-react-native": "5.1.4",
     "react": "18.2.0",
-    "react-native": "0.71.7",
+    "react-native": "0.71.8",
     "react-native-asset": "^2.1.0",
     "react-native-bouncy-checkbox": "^3.0.7",
     "react-native-confetti-cannon": "^1.5.2",

@@ -29,13 +29,7 @@ import SignInScreen from "./screens/SignInScreen";
 import OnBoardingScreen1 from "./screens/OnBoardingScreen1";
 import OnBoardingScreen2 from "./screens/OnBoardingScreen2";
 import OnBoardingScreen3 from "./screens/OnBoardingScreen3";
-import MondayScreen from "./screens/Day1MondayScreen";
-import TuesdayScreen from "./screens/Day2TuesdayScreen";
-import WednesdayScreen from "./screens/Day3WednesdayScreen";
-import ThursdayScreen from "./screens/Day4ThursdayScreen";
-import FridayScreen from "./screens/Day5FridayScreen";
-import SaturdayScreen from "./screens/Day6SaturdayScreen";
-import SundayScreen from "./screens/Day7SundayScreen";
+import DayScreen from "./screens/DayScreen";
 import TastedFoodScreen from "./screens/TastedFoodScreen";
 import ShoppingListScreen from "./screens/ShoppingListScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
@@ -149,13 +143,13 @@ export default function App() {
               component={OnBoardingScreen3}
             />
             <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
-            <Stack.Screen name="MondayScreen" component={MondayScreen} />
-            <Stack.Screen name="TuesdayScreen" component={TuesdayScreen} />
-            <Stack.Screen name="WednesdayScreen" component={WednesdayScreen} />
-            <Stack.Screen name="ThursdayScreen" component={ThursdayScreen} />
-            <Stack.Screen name="FridayScreen" component={FridayScreen} />
-            <Stack.Screen name="SaturdayScreen" component={SaturdayScreen} />
-            <Stack.Screen name="SundayScreen" component={SundayScreen} />
+            <Stack.Screen name="MondayScreen" component={DayScreen} />
+            <Stack.Screen name="TuesdayScreen" component={DayScreen} />
+            <Stack.Screen name="WednesdayScreen" component={DayScreen} />
+            <Stack.Screen name="ThursdayScreen" component={DayScreen} />
+            <Stack.Screen name="FridayScreen" component={DayScreen} />
+            <Stack.Screen name="SaturdayScreen" component={DayScreen} />
+            <Stack.Screen name="SundayScreen" component={DayScreen} />
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 
             <Stack.Screen
