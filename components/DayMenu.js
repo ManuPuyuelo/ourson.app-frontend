@@ -188,7 +188,7 @@ export default function DayMenu({ navigation }) {
     );
     return (
       <Chip key={i} style={styles.chip}>
-        <Text style={styles.chipText}>{ingredientMapped}</Text>
+        {ingredientMapped}
       </Chip>
     );
   });
@@ -203,8 +203,8 @@ export default function DayMenu({ navigation }) {
       adultCounter
     );
     return (
-      <Chip key={i} style={styles.chip}>
-        <Text style={styles.chipText}>{ingredientMapped}</Text>
+      <Chip key={i} style={styles.chip} textStyle={styles.chipText}>
+        {ingredientMapped}
       </Chip>
     );
   });
@@ -703,9 +703,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "center",
     marginBottom: 10,
-  },
-  chipText: {
-    flex: 1,
   },
   chip: {
     marginBottom: 6,

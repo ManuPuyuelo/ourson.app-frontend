@@ -79,12 +79,9 @@ const TastedFoodChip = ({
       selected={isSelected}
       icon={isSelected ? "check" : null}
       onPress={onPress}
+      textStyle={isSelected && { fontFamily: "Roboto-Bold" }}
     >
-      <Text
-        style={[styles.chipText, isSelected && { fontFamily: "Roboto-Bold" }]}
-      >
-        {name}
-      </Text>
+      {name}
     </Chip>
   );
 };
@@ -242,9 +239,7 @@ const styles = StyleSheet.create({
     marginRight: 6,
     height: 36,
   },
-  chipText: {
-    flex: 1,
-  },
+
   container: {
     flex: 1,
     backgroundColor: "#ffff",
