@@ -6,8 +6,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTastedFood, removeTastedFood } from "../reducers/household";
 
-import Header from "../components/Header";
-
 const TastedFoodChip = ({
   food,
   name,
@@ -201,7 +199,6 @@ export default function TastedFoodScreen({ navigation }) {
 
   return (
     <>
-      <Header navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.elemContainer}>
           <Text style={styles.title}>

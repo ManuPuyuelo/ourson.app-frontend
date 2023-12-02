@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 
 //Redux
 import { Provider } from "react-redux";
@@ -21,8 +21,11 @@ import * as SplashScreen from "expo-splash-screen";
 //Navigation modules
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { useRoute } from "@react-navigation/native";
 
 //Screens
+import Header from "./components/Header";
 import HeroScreen from "./screens/HeroScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import SignInScreen from "./screens/SignInScreen";
@@ -95,6 +98,100 @@ const theme = {
   },
 };
 
+function TopTabNavigator() {
+  const TopTab = createMaterialTopTabNavigator();
+  let navigation = useRoute();
+  return (
+    <TopTab.Navigator
+      screenOptions={{
+        tabBarStyle: { backgroundColor: "#FDF0ED" },
+        tabBarLabelStyle: {
+          fontFamily: "Roboto-Bold",
+          fontSize: 14,
+          textTransform: "none",
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: "#FF6B57",
+        },
+        tabBarBounces: "true",
+        tabBarScrollEnabled: "true",
+        tabBarActiveTintColor: "#FF6B57",
+        tabBarInactiveTintColor: "#E7BDB6",
+        tabBarItemStyle: {
+          width: "auto",
+          padding: 20,
+        },
+      }}
+    >
+      <TopTab.Screen
+        name="DashboardScreen"
+        options={{ title: "Dashboard" }}
+        component={DashboardScreen}
+      />
+      <TopTab.Screen
+        name="MondayScreen"
+        options={{ title: "Lundi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="TuesdayScreen"
+        options={{ title: "Mardi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="WednesdayScreen"
+        options={{ title: "Mercredi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="ThursdayScreen"
+        options={{ title: "Jeudi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="FridayScreen"
+        options={{ title: "Vendredi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="SaturdayScreen"
+        options={{ title: "Samedi" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="SundayScreen"
+        options={{ title: "Dimanche" }}
+        component={DayScreen}
+      />
+      <TopTab.Screen
+        name="ShoppingListScreen"
+        options={{ title: "Liste de courses" }}
+        component={ShoppingListScreen}
+      />
+      <TopTab.Screen
+        name="TastedFoodScreen"
+        options={{ title: "Diversification" }}
+        component={TastedFoodScreen}
+      />
+      <TopTab.Screen
+        name="FavoritesScreen"
+        options={{ title: "Favoris" }}
+        component={FavoritesScreen}
+      />
+      <TopTab.Screen
+        name="PanicModeScreen"
+        options={{ title: "Panic Mode" }}
+        component={PanicModeScreen}
+      />
+      <TopTab.Screen
+        name="SearchScreen"
+        options={{ title: "Rechercher" }}
+        component={SearchScreen}
+      />
+    </TopTab.Navigator>
+  );
+}
+
 export default function App() {
   const Stack = createNativeStackNavigator();
 
@@ -125,7 +222,11 @@ export default function App() {
     <PaperProvider theme={theme}>
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Navigator
+            screenOptions={({ route }) => ({
+              headerShown: route.name === "MainTabs",
+            })}
+          >
             <Stack.Screen name="Hero" component={HeroScreen} />
             <Stack.Screen name="SignIn" component={SignInScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
@@ -142,29 +243,11 @@ export default function App() {
               name="OnBoardingScreen3"
               component={OnBoardingScreen3}
             />
-            <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
-            <Stack.Screen name="MondayScreen" component={DayScreen} />
-            <Stack.Screen name="TuesdayScreen" component={DayScreen} />
-            <Stack.Screen name="WednesdayScreen" component={DayScreen} />
-            <Stack.Screen name="ThursdayScreen" component={DayScreen} />
-            <Stack.Screen name="FridayScreen" component={DayScreen} />
-            <Stack.Screen name="SaturdayScreen" component={DayScreen} />
-            <Stack.Screen name="SundayScreen" component={DayScreen} />
-            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 
             <Stack.Screen
               name="SearchedRecipeScreen"
               component={SearchedRecipeScreen}
             />
-            <Stack.Screen
-              name="ShoppingListScreen"
-              component={ShoppingListScreen}
-            />
-            <Stack.Screen
-              name="TastedFoodScreen"
-              component={TastedFoodScreen}
-            />
-            <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
             <Stack.Screen
               name="FavoriteRecipeScreen"
               component={FavoriteRecipeScreen}
@@ -174,7 +257,12 @@ export default function App() {
               name="PanicModeRecipesScreen"
               component={PanicModeRecipesScreen}
             />
-            <Stack.Screen name="SearchScreen" component={SearchScreen} />
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen
+              name="MainTabs"
+              component={TopTabNavigator}
+              options={{ header: () => <Header /> }}
+            />
           </Stack.Navigator>
           <View onLayout={onLayoutRootView}>
             <StatusBar style="auto" />
@@ -184,19 +272,3 @@ export default function App() {
     </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ffff",
-  },
-  background: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-  },
-});

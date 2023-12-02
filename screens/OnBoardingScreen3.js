@@ -5,7 +5,13 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
 } from "react-native";
-import { Button, Text, ProgressBar, TextInput, HelperText } from "react-native-paper";
+import {
+  Button,
+  Text,
+  ProgressBar,
+  TextInput,
+  HelperText,
+} from "react-native-paper";
 
 import { useState, useEffect } from "react";
 
@@ -54,7 +60,7 @@ export default function OnBoardingScreen1({ navigation }) {
     }
   }, []);
 
-  const handleSubmit = () => {    
+  const handleSubmit = () => {
     if (firstName && email && password) {
       fetch("https://back.ourson.app/users/signupGuest", {
         method: "POST",
@@ -65,13 +71,13 @@ export default function OnBoardingScreen1({ navigation }) {
         .then((data) => {
           if (data.result) {
             console.log("hh reducer3", household);
-            navigation.navigate(todayDay);
+            navigation.navigate("MainTabs", { screen: todayDay });
           } else {
             setShowError(true);
           }
         });
     } else {
-      navigation.navigate(todayDay);
+      navigation.navigate("MainTabs", { screen: todayDay });
       console.log("hh reducer3", household);
     }
   };
@@ -135,7 +141,7 @@ export default function OnBoardingScreen1({ navigation }) {
               visible={showError}
               style={styles.errorMessage}
             >
-            L'utilisateur avec cet email existe déjà.          
+              L'utilisateur avec cet email existe déjà.
             </HelperText>
           </View>
           <Button

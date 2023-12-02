@@ -12,8 +12,6 @@ import { Searchbar } from "react-native-paper";
 
 import { useState, useEffect } from "react";
 
-import Header from "../components/Header";
-
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchedRecipe } from "../reducers/recipes";
 
@@ -61,7 +59,7 @@ export default function DashboardScreen({ navigation }) {
   return (
     <View>
       <SafeAreaView />
-      <Header navigation={navigation} />
+
       <ImageBackground
         source={require("../assets/dashboardBackground.png")}
         style={styles.background}
@@ -73,7 +71,7 @@ export default function DashboardScreen({ navigation }) {
             onChangeText={(text) => setSearchValue(text)}
             value={searchValue}
             onIconPress={() => {
-                handleSubmit(),
+              handleSubmit(),
                 setFlatListVisible(true),
                 setDashboardVisible(false);
             }}

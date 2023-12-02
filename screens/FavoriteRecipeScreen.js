@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 
 import { useRoute } from "@react-navigation/native";
 
-import Header from "../components/Header";
-
 import CleanIngredientsFormat from "../modules/CleanIngredientsFormat";
 
 export default function FavoriteRecipeScreen({ navigation }) {
@@ -73,7 +71,6 @@ export default function FavoriteRecipeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
-      <Header navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.titleContain}>
           <View style={styles.titleSwiper}>
