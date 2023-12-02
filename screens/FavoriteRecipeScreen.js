@@ -22,7 +22,6 @@ export default function FavoriteRecipeScreen({ navigation }) {
   const [babyCounter, setBabyCounter] = useState(kidsCount);
   const [adultCounter, setAdultCounter] = useState(hhSize - kidsCount);
 
-
   const babyIngredientsChips = babyRecipe?.ingredients.map((data, i) => {
     let ingredientMapped = CleanIngredientsFormat(
       data.quantity,
@@ -33,12 +32,11 @@ export default function FavoriteRecipeScreen({ navigation }) {
     );
     return (
       <Chip key={i} style={styles.chip}>
-        <Text style={styles.chipText}>{ingredientMapped}</Text>
+        {ingredientMapped}
       </Chip>
     );
   });
 
- 
   const adultIngredientsChips = adultRecipe?.ingredients.map((data, i) => {
     let ingredientMapped = CleanIngredientsFormat(
       data.quantity,
@@ -334,9 +332,6 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "center",
     marginBottom: 10,
-  },
-  chipText: {
-    flex: 1,
   },
   chip: {
     marginBottom: 6,

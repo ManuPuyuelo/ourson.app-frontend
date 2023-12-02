@@ -153,9 +153,7 @@ const styles = StyleSheet.create({
   },
   recipesContain: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
+    flexDirection: "column",
   },
   descriptionPage: {
     fontFamily: "Roboto",
@@ -168,7 +166,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     resizeMode: "cover",
     overflow: "hidden",
-    marginBottom: 14,
   },
 
   containerTextHeart: {
@@ -181,10 +178,9 @@ const styles = StyleSheet.create({
 
   recipeTitle: {
     fontFamily: "Bryndan_Write",
-    fontSize: 20,
-    lineHeight: 22,
+    fontSize: 24,
+    lineHeight: 26,
     color: "white",
-    height: 70,
   },
 
   heartIconBackground: {

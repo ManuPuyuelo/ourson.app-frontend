@@ -32,7 +32,7 @@ export default function SingleRecipeScreen({ navigation }) {
 
     return (
       <Chip key={i} style={styles.chip}>
-        <Text style={styles.chipText}>{ingredientMapped}</Text>
+        {ingredientMapped}
       </Chip>
     );
   });
@@ -53,57 +53,55 @@ export default function SingleRecipeScreen({ navigation }) {
           contentContainerStyle={styles.scrollView}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.recipesContain}>
-            <View style={styles.recipeContain}>
-              <View style={styles.recipeCard}>
-                <ImageBackground
+          <View style={styles.recipeContain}>
+            <View style={styles.recipeCard}>
+              <ImageBackground
+                style={{
+                  height: 340,
+                  width: 340,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  padding: "8%",
+                }}
+                z
+                source={{
+                  uri: babyRecipe.imageURL,
+                }}
+              >
+                <LinearGradient
+                  colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
                   style={{
-                    height: 290,
-                    width: 290,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-end",
-                    padding: "8%",
+                    height: 340,
+                    width: 340,
+                    position: "absolute",
+                    bottom: 0,
+                    opacity: 0.5,
                   }}
-                  z
-                  source={{
-                    uri: babyRecipe.imageURL,
+                />
+                <Text style={styles.recipeTitle}>{babyRecipe.title}</Text>
+              </ImageBackground>
+            </View>
+            <View style={styles.recipePortion}>
+              <Text style={styles.titlePortion}>Portions</Text>
+              <View style={styles.changePortion}>
+                <Icon
+                  name="minus"
+                  size={28}
+                  color="black"
+                  onPress={() => {
+                    handleClickPortionsBaby("sub");
                   }}
-                >
-                  <LinearGradient
-                    colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
-                    style={{
-                      height: 290,
-                      width: 290,
-                      position: "absolute",
-                      bottom: 0,
-                      opacity: 0.5,
-                    }}
-                  />
-                  <Text style={styles.recipeTitle}>{babyRecipe.title}</Text>
-                </ImageBackground>
-              </View>
-              <View style={styles.recipePortion}>
-                <Text style={styles.titlePortion}>Portions</Text>
-                <View style={styles.changePortion}>
-                  <Icon
-                    name="minus"
-                    size={28}
-                    color="black"
-                    onPress={() => {
-                      handleClickPortionsBaby("sub");
-                    }}
-                  />
-                  <Text style={styles.nbPortion}>{babyCounter}</Text>
-                  <Icon
-                    name="plus"
-                    size={28}
-                    color="black"
-                    onPress={() => {
-                      handleClickPortionsBaby("add");
-                    }}
-                  />
-                </View>
+                />
+                <Text style={styles.nbPortion}>{babyCounter}</Text>
+                <Icon
+                  name="plus"
+                  size={28}
+                  color="black"
+                  onPress={() => {
+                    handleClickPortionsBaby("add");
+                  }}
+                />
               </View>
             </View>
           </View>
@@ -125,9 +123,7 @@ const styles = StyleSheet.create({
   chip: {
     marginBottom: 6,
     marginRight: 6,
-  },
-  chipText: {
-    flex: 1,
+    height: 40,
   },
   container: {
     margin: 40,
@@ -160,7 +156,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#FFDAD4",
     marginBottom: 14,
-    marginRight: 10,
   },
   nbPortion: {
     fontSize: 20,
@@ -178,18 +173,14 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: "center",
   },
-  recipesContain: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   recipeContain: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
   },
   recipeCard: {
-    width: 290,
-    height: 290,
+    width: 340,
+    height: 340,
     borderRadius: 8,
     resizeMode: "cover",
     overflow: "hidden",
@@ -205,7 +196,6 @@ const styles = StyleSheet.create({
     height: 65,
     marginTop: 20,
     marginBottom: 10,
-    marginLeft: 75,
   },
   changePortion: {
     fontFamily: "Roboto-Bold",
