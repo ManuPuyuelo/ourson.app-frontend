@@ -11,7 +11,7 @@ import { login } from "../reducers/user";
 import { getHousehold } from "../reducers/household";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function SignInScreen({ navigation }) {  
+export default function SignInScreen({ navigation }) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -90,9 +90,9 @@ export default function SignInScreen({ navigation }) {
               diet,
               tastedFoods: data.household.tastedFoods,
               shoppingList: data.household.shoppingList,
-            })          
+            })
           );
-          navigation.navigate(todayDay);
+          navigation.navigate("MainTabs", { screen: todayDay });
         } else {
           setShowError(!showError);
         }

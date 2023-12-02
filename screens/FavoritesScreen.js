@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addLikedRecipe } from "../reducers/household";
 
-import Header from "../components/Header";
 import FavoriteRecipe from "../components/FavoriteRecipe";
 
 export default function FavoritesScreen({ navigation }) {
@@ -41,7 +40,6 @@ export default function FavoritesScreen({ navigation }) {
 
   return (
     <>
-      <Header navigation={navigation} />
       <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
         <View style={styles.container}>
           <Text style={styles.descriptionPage}>

@@ -6,8 +6,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addSearchedRecipe } from "../reducers/recipes";
 
-import Header from "../components/Header";
-
 export default function SearchScreen({ navigation }) {
   const dispatch = useDispatch();
 
@@ -43,7 +41,6 @@ export default function SearchScreen({ navigation }) {
 
   return (
     <>
-      <Header navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.elemContainer}>
           <Text style={styles.title}>Regénérer la recette enfant</Text>

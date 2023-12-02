@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 
 import { useRoute } from "@react-navigation/native";
 
-import Header from "../components/Header";
-
 import CleanIngredientsFormat from "../modules/CleanIngredientsFormat";
 
 export default function FavoriteRecipeScreen({ navigation }) {
@@ -21,7 +19,6 @@ export default function FavoriteRecipeScreen({ navigation }) {
   const kidsCount = useSelector((state) => state.household.value.kidsCount);
   const [babyCounter, setBabyCounter] = useState(kidsCount);
   const [adultCounter, setAdultCounter] = useState(hhSize - kidsCount);
-
 
   const babyIngredientsChips = babyRecipe?.ingredients.map((data, i) => {
     let ingredientMapped = CleanIngredientsFormat(
@@ -38,7 +35,6 @@ export default function FavoriteRecipeScreen({ navigation }) {
     );
   });
 
- 
   const adultIngredientsChips = adultRecipe?.ingredients.map((data, i) => {
     let ingredientMapped = CleanIngredientsFormat(
       data.quantity,
@@ -75,7 +71,6 @@ export default function FavoriteRecipeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
-      <Header navigation={navigation} />
       <View style={styles.container}>
         <View style={styles.titleContain}>
           <View style={styles.titleSwiper}>
